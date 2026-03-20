@@ -397,7 +397,7 @@ classdef HedToolsPython < HedTools
             elseif py.isinstance(events, hmod.TabularInput)
                 tabularObj = events;
             else
-                throw(MException('HedToolsPytonGetTabularInput:Invalid input'))
+                throw(MException('HedToolsPythonGetTabularInput:Invalid input'))
             end
         end
 
