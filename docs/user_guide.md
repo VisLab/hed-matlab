@@ -721,7 +721,7 @@ This installs all required packages including:
 **Development tools:**
 
 - ruff (linter and formatter)
-- codespell (spell checker)
+- typos (spell checker)
 - mdformat (Markdown formatter)
 
 ### Building the docs

@@ -52,7 +52,7 @@ Note: the Sphinx source root is `docs/` (not `docs/source/`).
 ### Run tests and linting
 
 - **MATLAB tests**: Run `run_tests.m` in MATLAB, or via CI with `addpath(genpath("hedmat")), addpath(genpath("tests")), run_tests`
-- **Spelling**: `codespell .`
+- **Spelling**: `uvx typos`
 - **Lint**: `ruff check .`
 
 ## CI/CD workflows
@@ -62,6 +62,7 @@ GitHub Actions workflows live in `.github/workflows/`:
 - **`deploy-docs.yaml`**: Builds Sphinx docs on every push/PR to `main`; deploys to GitHub Pages only on push to `main`
   - Uses `uv` with Python 3.10, installs `.[docs]`, runs `patch_matlabdomain.py`, then `sphinx-build`
   - `actions/checkout@v6`, `astral-sh/setup-uv@v7`, `actions/configure-pages@v5`, `actions/upload-pages-artifact@v4`, `actions/deploy-pages@v4`
+- **`typos.yaml`**: Checks spelling on every push/PR to `main` using `uvx typos`
 - **MATLAB tests**: Run via `matlab-actions/run-command@v2` with `addpath(genpath("hedmat")), addpath(genpath("tests")), run_tests`
 
 ## Key principles
