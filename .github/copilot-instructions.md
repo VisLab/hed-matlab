@@ -11,6 +11,7 @@ When you create summaries of what you did, put them in the `.status/` directory 
 ## Repository overview
 
 This repository provides MATLAB tools and demonstrations for HED integration, including:
+
 - MATLAB wrapper functions for HED validation and services
 - Web service demonstrations and client examples
 - Event data remodeling and processing utilities
@@ -68,6 +69,7 @@ GitHub Actions workflows live in `.github/workflows/`:
 ## Key principles
 
 ### 1. MATLAB code standards
+
 - Use clear, descriptive function and variable names
 - Include comprehensive doc comments using `%%` section markers
 - Follow MATLAB naming conventions: camelCase for functions, UPPER_CASE for constants
@@ -75,18 +77,21 @@ GitHub Actions workflows live in `.github/workflows/`:
 - Test MATLAB functions with the unit test framework in `tests/`
 
 ### 2. HED annotation standards
+
 - HED uses hierarchical vocabulary organized in tag trees
 - Tags are case-sensitive and use forward slashes for hierarchy (e.g., `Sensory-event/Visual/Color/Red`)
 - Groups use parentheses for semantic association
 - Definitions allow reusable annotation patterns with placeholders
 
 ### 3. Documentation standards
+
 - Write technical documentation for advanced MATLAB users
 - Include code examples with proper MATLAB syntax
 - Use Sphinx-generated API documentation for auto-documented functions
 - Link to external HED resources: [HED Tags](https://www.hedtags.org)
 
 ### 4. Testing standards
+
 - Unit tests are in `tests/` as MATLAB files following the `Test*.m` naming convention
 - Use MATLAB's unit testing framework; test both valid and invalid inputs
 
@@ -106,6 +111,7 @@ GitHub Actions workflows live in `.github/workflows/`:
 ## Common tasks
 
 ### When writing documentation
+
 - Follow the structure in existing markdown files in `docs/`
 - Use proper markdown heading hierarchy and sentence case for all headers
 - Include code blocks with `matlab` language tag for MATLAB examples
@@ -113,36 +119,43 @@ GitHub Actions workflows live in `.github/workflows/`:
 - Reference the current specification version (3.3.0)
 
 ### When writing MATLAB code
+
 - Document functions with `%%` section headers including syntax, input, output, and examples
 - Include error handling for invalid inputs
 - Test code with the unit test framework
 
 ### When writing Python helper scripts
+
 - Use type hints for function parameters and return values
 - Include docstrings for modules, classes, and functions
 - Handle file paths using `pathlib.Path` for cross-platform compatibility
 
 ### When working with HED schema
+
 - HED schema files are XML with `.xml` extension; format: `HED{major}.{minor}.{patch}.xml`
 - Latest stable schema: https://raw.githubusercontent.com/hed-standard/hed-schemas/main/standard_schema/hedxml/HEDLatest.xml
 
 ## Important conventions
 
 ### HED syntax examples
+
 - Use backticks for inline HED tags: `Sensory-event`
 - Use code blocks with `hed` language tag for multi-line HED strings
 - Show both short form (e.g., `Red`) and long form (e.g., `Property/Sensory-property/.../Red`)
 
 ### MATLAB code examples
+
 - Use proper MATLAB syntax highlighting in markdown
 - Include complete working examples where possible
 - Reference related functions using full path names
 
 ### Version references
+
 - Always specify which specification version introduces or modifies features
 - Distinguish between specification version (3.x.x) and schema version (8.x.x)
 
 ## Avoid
+
 - Don't modify HED schema XML files in `data/schema_data/` (these are for reference)
 - Don't introduce breaking changes to MATLAB function signatures without discussion
 - Don't use ambiguous or informal language in documentation
@@ -150,6 +163,7 @@ GitHub Actions workflows live in `.github/workflows/`:
 - Don't use title case for markdown headers
 
 ## Related resources
+
 - [HED specification (ReadTheDocs)](https://hed-specification.readthedocs.io)
 - [HED resources](https://www.hedtags.org/hed-resources)
 - [HED schemas repository](https://github.com/hed-standard/hed-schemas)
@@ -158,8 +172,6 @@ GitHub Actions workflows live in `.github/workflows/`:
 - [MATLAB documentation](https://www.mathworks.com/help/matlab/)
 - [Sphinx documentation](https://www.sphinx-doc.org/)
 
----
-*This file provides context for GitHub Copilot to better assist with hed-matlab development.*
+______________________________________________________________________
 
----
-*This file provides context for GitHub Copilot to better assist with HED-resources development. It is excluded from version control.*
+*This file provides context for GitHub Copilot to better assist with hed-matlab development.*
