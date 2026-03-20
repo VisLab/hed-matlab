@@ -5,10 +5,9 @@
 # https://github.com/lycheeverse/lychee#configuration
 #
 # This configuration addresses false positive errors from the link checker:
-# - 403 Forbidden: Some sites (npmjs.com, mathworks.com, doi.org) block automated 
+# - 403 Forbidden: Some sites (npmjs.com, mathworks.com, doi.org) block automated
 #   requests but work fine in browsers
 # - 429 Too Many Requests: Rate limiting doesn't mean the link is broken
-# - See .lycheeignore for sites/patterns that are completely excluded
 
 # Accept these HTTP status codes as valid
 # 200: OK (standard success)
@@ -29,21 +28,63 @@ max_concurrency = 8
 
 # User agent string to use for requests
 # Some sites require a browser-like user agent to avoid blocking
-user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0"
+user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0'
 
-# Exclude patterns - regex patterns to exclude from checking
-# These are Sphinx theme template files with Jinja2 variables that shouldn't be checked
+# Exclude path patterns - Sphinx theme template files with Jinja2 variables
 exclude_path = [
-    "webpack-macros\\.html$",
-    "sbt-webpack-macros\\.html$",
-    ".*-macros\\.html$"
+    'webpack-macros\.html$',
+    'sbt-webpack-macros\.html$',
+    '.*-macros\.html$'
 ]
 
 # Exclude URL patterns from link checking
-# Fragment identifiers (#) and query parameters (?) in file:// URLs
 exclude = [
-    "^file://.*%23",
-    "^file://.*%3F",
-    "^file://.*#",
-    "^file://.*\\?"
+    # File:// fragment/query false positives
+    '^file://.*%23',
+    '^file://.*%3F',
+    '^file://.*#',
+    '^file://.*\?',
+
+    # ScienceDirect (require authentication/cookies)
+    '^https?://www\.sciencedirect\.com/science/article/pii/S1053811921010387',
+    '^https?://www\.sciencedirect\.com/science/article/pii/S0010945221001106',
+    '^https?://www\.sciencedirect\.com/science/article/pii/S1388245717309069',
+
+    # Springer (503 errors in automated requests, work in browsers)
+    '^https?://link\.springer\.com/',
+
+    # INCF (certificate/network issues)
+    '^https?://.*\.incf\.org/',
+    '^https?://incf\.org/',
+    '^https?://neuroinformatics\.incf\.org/',
+
+    # DOI (403 in automated requests, works in browsers)
+    '^https?://doi\.org/10\.1111/epi\.18113',
+
+    # npmjs (blocks automated requests)
+    '^https?://.*\.npmjs\.com/package/hed-validator',
+
+    # MathWorks (blocks automated requests)
+    '^https?://.*\.mathworks\.com/',
+
+    # Brain Meeting posters (expired/removed)
+    '^https?://brainmeeting.*\.ipostersessions\.com/',
+    '^https?://globalbrainconsortium\.org/documents/GBC_March-2023_Agenda_Annual_Meeting\.pdf',
+
+    # CANCTA network (authentication/access issues)
+    '^https?://.*\.cancta\.net/',
+    '^https?://cancta\.net/',
+
+    # GitHub discussions (programmatic access blocked)
+    '^https?://github\.com/hed-standard/hed-python/discussions',
+
+    # HED tools services (programmatic access blocked)
+    '^https?://hedtools\.org/hed/services_submit',
+
+    # Local development servers
+    '^https?://127\.0\.0\.1',
+    '^https?://localhost',
+
+    # Internal anchor links (false positives from lychee)
+    '(_anchor|-anchor)'
 ]
